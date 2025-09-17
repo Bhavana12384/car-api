@@ -1,0 +1,58 @@
+definitions:
+  model.Users:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
+info:
+  contact: {}
+  description: This is a sample page
+  termsOfService: http://swagger.io/terms/
+  title: Car Api
+  version: "1.0"
+paths:
+  /helloworld:
+    get:
+      description: printing hello world
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: hello world
+      tags:
+      - Helloworld
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: Register the User into DB
+      parameters:
+      - description: User details for creation
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.Users'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Signup
+          schema:
+            additionalProperties: true
+            type: object
+      summary: User Registration
+      tags:
+      - SignUP
+swagger: "2.0"
